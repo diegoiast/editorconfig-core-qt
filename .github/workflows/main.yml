@@ -1,0 +1,51 @@
+name: "Build Test"
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        qt_version: [5.12.10, 5.15.2]
+        platform: [windows-latest]
+
+    runs-on: ${{ matrix.platform }}
+
+    steps:
+    - uses: actions/checkout@v2
+      with:
+          submodules: true
+
+    - name: Install Qt
+      uses: jurplel/install-qt-action@v2
+      with:
+        version: ${{ matrix.qt_version }}
+        
+    - name: Setup VS tools
+      uses: egor-tensin/vs-shell@v2
+      with:
+        arch: x64
+
+    - name: Install jom
+      run: choco install jom
+
+    - name: Run QMake
+      run: |
+        mkdir build
+        cd build
+        qmake ..\src\editorconfig-app\editorconfig-app.pro
+        
+    - name: Build
+      run: |
+        cd build
+        jom
+        
+    - name: CMake Test
+      run: |
+        cd build
+        cmake ..
+
+    - name: CTest
+      run: |
+        cd build
+        ctest -C Release
