@@ -48,5 +48,4 @@ jobs:
     - name: CTest
       run: |
         cd build
-        ctest -C Release
-        echo 'Ignoring failing tests'
+        Invoke-Expression 'ctest -C Release'
