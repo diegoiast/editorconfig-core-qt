@@ -48,4 +48,4 @@ jobs:
     - name: CTest
       run: |
         cd build
-        Invoke-Expression 'cmd /c ctest -C Release'
+        Invoke-Expression 'cmd /c "ctest -C Release"'
