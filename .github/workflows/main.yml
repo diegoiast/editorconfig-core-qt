@@ -48,4 +48,4 @@ jobs:
     - name: CTest
       run: |
         cd build
-        ctest -C Release -E braces_nested_start3 -E braces_nested_start4 -E braces_nested_end4 -E braces_nested_end5 -E braces_escaped_comma1 -E braces_patterns_nested2 -E braces_patterns_nested3 -E braces_patterns_nested5 -E braces_patterns_nested6 -E braces_patterns_nested8 -E braces_patterns_nested9 -E braces_numeric_range2 -E braces_numeric_range3 -E braces_numeric_range4 -E braces_numeric_range6 -E utf_8_char -E indent_size_default_pre_0_9_0 -E lowercase_values1_ML -E lowercase_values2_ML -E min_supported_key_length -E min_supported_value_length
+        ctest -C Release -E "(braces_nested_start3|braces_nested_start4|braces_nested_end4|braces_nested_end5|braces_escaped_comma1|braces_patterns_nested2|braces_patterns_nested3|braces_patterns_nested5|braces_patterns_nested6|braces_patterns_nested8|braces_patterns_nested9|braces_numeric_range2|braces_numeric_range3|braces_numeric_range4|braces_numeric_range6|utf_8_char|indent_size_default_pre_0_9_0|lowercase_values1_ML|lowercase_values2_ML|min_supported_key_length|min_supported_value_length)"
